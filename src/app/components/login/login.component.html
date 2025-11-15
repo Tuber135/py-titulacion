@@ -1,0 +1,65 @@
+<div class="auth-container">
+  <div class="left-section">
+    <div class="hero-content">
+      <h1>El bienestar de tu mascota,</h1>
+      <h1>en un solo lugar.</h1>
+    </div>
+  </div>
+
+  <div class="right-section">
+    <div class="form-container">
+      <div class="logo-header">
+        <img src="assets/images/Logo.svg" alt="PetCare Logo">
+      </div>
+
+      <h1 class="title">Bienvenido de vuelta</h1>
+      <p class="subtitle">Inicia sesión para continuar.</p>
+
+      <div *ngIf="loginError" class="error-message-general">
+        <span class="error-icon">⚠</span>
+        <span>Credenciales erróneas y/o inexistentes</span>
+      </div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="documentId">Documento de identidad</label>
+          <input
+            type="text"
+            id="documentId"
+            formControlName="documentId"
+            [class.error]="loginError"
+            placeholder="12345678"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            maxlength="8"
+            appOnlyNumbers
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <div class="password-input-wrapper">
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              id="password"
+              formControlName="password"
+              [class.error]="loginError"
+              placeholder="Introduce tu contraseña"
+            >
+            <button type="button" class="toggle-password" (click)="togglePassword()">
+              <span class="eye-icon">👁</span>
+            </button>
+          </div>
+        </div>
+
+        <a routerLink="/forgot-password" class="forgot-password">¿Olvidaste tu contraseña?</a>
+
+        <button type="submit" class="btn-primary">Iniciar Sesión</button>
+
+        <p class="switch-auth">
+          ¿No tienes cuenta? <a routerLink="/registro">Crear una cuenta</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,106 @@
+<div class="auth-container">
+  <div class="left-section">
+    <div class="hero-content">
+      <h1>El bienestar de tu mascota,</h1>
+      <h1>en un solo lugar.</h1>
+    </div>
+  </div>
+
+  <div class="right-section">
+    <div class="form-container">
+      <div class="logo-header">
+        <img src="assets/images/Logo.svg" alt="PetCare Logo">
+      </div>
+
+      <h1 class="title">Crea tu cuenta</h1>
+      <p class="subtitle">Únete para empezar a cuidar de tu mascota</p>
+
+      <div *ngIf="hasErrors()" class="error-message-general">
+        <span class="error-icon">⚠</span>
+        <span>Por favor, corrige los errores indicados.</span>
+      </div>
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="documentId">Documento de identidad</label>
+          <input
+            type="text"
+            id="documentId"
+            formControlName="documentId"
+            [class.error]="isFieldInvalid('documentId')"
+            placeholder="12345678"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            maxlength="8"
+            appOnlyNumbers
+          >
+          <span class="error-text" *ngIf="isFieldInvalid('documentId')">
+            <span class="error-icon-small">⚠</span>
+            {{ getErrorMessage('documentId') }}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <input
+            type="email"
+            id="email"
+            formControlName="email"
+            [class.error]="isFieldInvalid('email')"
+            placeholder="correo@correo.com"
+          >
+          <span class="error-text" *ngIf="isFieldInvalid('email')">
+            <span class="error-icon-small">⚠</span>
+            {{ getErrorMessage('email') }}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <div class="password-input-wrapper">
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              id="password"
+              formControlName="password"
+              [class.error]="isFieldInvalid('password')"
+              placeholder="••••"
+            >
+            <button type="button" class="toggle-password" (click)="togglePassword()">
+              <span class="eye-icon">👁</span>
+            </button>
+          </div>
+          <span class="error-text" *ngIf="isFieldInvalid('password')">
+            <span class="error-icon-small">⚠</span>
+            {{ getErrorMessage('password') }}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirmar contraseña</label>
+          <div class="password-input-wrapper">
+            <input
+              [type]="showConfirmPassword ? 'text' : 'password'"
+              id="confirmPassword"
+              formControlName="confirmPassword"
+              [class.error]="isFieldInvalid('confirmPassword')"
+              placeholder="Vuelve a introducir tu contraseña"
+            >
+            <button type="button" class="toggle-password" (click)="toggleConfirmPassword()">
+              <span class="eye-icon">👁</span>
+            </button>
+          </div>
+          <span class="error-text" *ngIf="isFieldInvalid('confirmPassword')">
+            <span class="error-icon-small">⚠</span>
+            {{ getErrorMessage('confirmPassword') }}
+          </span>
+        </div>
+
+        <button type="submit" class="btn-primary">Crear cuenta</button>
+
+        <p class="switch-auth">
+          ¿Ya tienes una cuenta? <a routerLink="/inicio-sesion">Inicia sesión</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
