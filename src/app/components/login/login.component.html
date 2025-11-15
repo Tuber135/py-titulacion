@@ -1,24 +1,15 @@
-<div class="auth-container">
-  <div class="left-section">
-    <div class="hero-content">
-      <h1>El bienestar de tu mascota,</h1>
-      <h1>en un solo lugar.</h1>
-    </div>
-  </div>
-
-  <div class="right-section">
+<div class="right-section">
     <div class="form-container">
       <div class="logo-header">
         <img src="assets/images/Logo.svg" alt="PetCare Logo">
       </div>
 
       <h1 class="title">Bienvenido de vuelta</h1>
-      <p class="subtitle">Inicia sesión para continuar.</p>
-
-      <div *ngIf="loginError" class="error-message-general">
+      <p *ngIf="!loginError" class="subtitle">Inicia sesión para continuar.</p>
+      <p *ngIf="loginError" class="error-message-general">
         <span class="error-icon">⚠</span>
         <span>Credenciales erróneas y/o inexistentes</span>
-      </div>
+      </p>
 
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
@@ -61,5 +52,4 @@
         </p>
       </form>
     </div>
-  </div>
 </div>

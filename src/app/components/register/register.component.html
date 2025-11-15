@@ -1,24 +1,15 @@
-<div class="auth-container">
-  <div class="left-section">
-    <div class="hero-content">
-      <h1>El bienestar de tu mascota,</h1>
-      <h1>en un solo lugar.</h1>
-    </div>
-  </div>
-
-  <div class="right-section">
+<div class="right-section">
     <div class="form-container">
       <div class="logo-header">
         <img src="assets/images/Logo.svg" alt="PetCare Logo">
       </div>
 
       <h1 class="title">Crea tu cuenta</h1>
-      <p class="subtitle">Únete para empezar a cuidar de tu mascota</p>
-
-      <div *ngIf="hasErrors()" class="error-message-general">
+      <p *ngIf="!hasErrors()" class="subtitle">Únete para empezar a cuidar de tu mascota</p>
+      <p *ngIf="hasErrors()" class="error-message-general">
         <span class="error-icon">⚠</span>
         <span>Por favor, corrige los errores indicados.</span>
-      </div>
+      </p>
 
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
@@ -102,5 +93,4 @@
         </p>
       </form>
     </div>
-  </div>
 </div>

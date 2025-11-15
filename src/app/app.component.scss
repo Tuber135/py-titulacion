@@ -1,1 +1,54 @@
-/* App component styles - Limpio ya que los componentes hijos manejan sus estilos */
+/* App component styles - Layout principal con panel izquierdo fijo */
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Panel izquierdo fijo */
+.left-section-fixed {
+  flex: 1;
+  background-color: var(--color-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content h1 {
+  color: var(--color-white);
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* Wrapper del panel derecho con animaciones */
+.right-section-wrapper {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  .left-section-fixed {
+    min-height: 200px;
+    flex: none;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .right-section-wrapper {
+    flex: 1;
+  }
+}

@@ -4,7 +4,7 @@ import { RegisterComponent } from './components/register/register.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/inicio-sesion', pathMatch: 'full' },
-  { path: 'inicio-sesion', component: LoginComponent },
-  { path: 'registro', component: RegisterComponent },
+  { path: 'inicio-sesion', component: LoginComponent, data: { animation: 'LoginPage' } },
+  { path: 'registro', component: RegisterComponent, data: { animation: 'RegisterPage' } },
   { path: '**', redirectTo: '/inicio-sesion' }
 ];
